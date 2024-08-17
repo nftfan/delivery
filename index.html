@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Delivery</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f0f2f5;
+        }
+        #map {
+            height: 100vh;
+            width: 100vw;
+        }
+        .popup-content {
+            max-width: 150px;
+            width: 150px;
+            color: #333;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+        }
+        .popup-content input, .popup-content textarea {
+            width: calc(100% - 16px);
+            padding: 12px;
+            margin-bottom: 2px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+            font-size: 12px;
+        }
+        .popup-content textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        .popup-content button {
+            width: calc(100% - 32px);
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 8px;
+        }
+        .popup-content button:hover {
+            background-color: #45a049;
+        }
+        
+        .icon-button img {
+            width: 10px;
+            height: 10px;
+        }
+        .confirmation-message {
+            text-align: left;
+            margin-top: 10px;
+        }
+        .order-code {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .confirmation-button {
+            background-color: #25D366;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 14px;
+			font-color: #ffffff;
+            cursor: pointer;
+            padding: 8px;
+            text-align: center;
+            width: 100%;
+            text-decoration: none;
+            display: block;
+            margin-top: 8px;
+        }
+        
+        h1 {
+            text-align: center;
+            padding: 10px;
+            font-size: 1.5em;
+            margin: 0;
+            position: absolute;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        @media only screen and (max-width: 600px) {
+            .popup-content {
+                font-size: 12px;
+            }
+            .popup-content input, .popup-content textarea {
+                font-size: 12px;
+            }
+            .popup-content button {
+                font-size: 12px;
+                padding: 8px;
+            }
+            h1 {
+                font-size: 1.2em;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Personal Delivery Leuven</h1>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.140.0.min.js"></script>
+    <script>
+        // AWS Configuration
+        AWS.config.update({
+            region: 'eu-north-1',
+            credentials: new AWS.Credentials('AKIAVRUVVVUM73M5ULGL', '3CaIv7G5VbNfue6j5g7EOZwAKYPuT8c9VL40QZIx')
+        });
+
+        var dynamoDB = new AWS.DynamoDB.DocumentClient();
+        var tableName = 'date01';
+
+        // Define the bounds for Leuven, Belgium
+        const bounds = L.latLngBounds([
+            [50.881105905697815, 4.679918289184571],
+            [50.871032302986535, 4.68395233154297],
+            [50.866428049928565, 4.700603485107423],
+            [50.87065314638895, 4.715452194213868],
+            [50.88002282709126, 4.718542098999024],
+            [50.88706238802917, 4.715023040771485],
+            [50.89020277208792, 4.7043800354003915],
+            [50.89079833828432, 4.69167709350586],
+            [50.88587115248574, 4.6830081939697275]
+        ]);
+
+        // Initialize the map with a view focused on Leuven, Belgium
+        const map = L.map('map', {
+            minZoom: 14,
+            maxZoom: 19,
+            maxBounds: bounds,
+            maxBoundsViscosity: 1.0,
+            zoomControl: true
+        }).fitBounds(bounds);
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19
+        }).addTo(map);
+
+        // Restrict map movement to within bounds
+        map.on('moveend', function() {
+            if (map.getBounds().intersects(bounds)) {
+                return;
+            }
+            map.setView(bounds.getCenter(), map.getZoom());
+        });
+
+        // Function to handle map clicks and show the input box
+        function onMapClick(e) {
+            const latlng = e.latlng;
+
+            // Create a popup with the form
+            const popupContent = `
+                <div class="popup-content">
+                    <div id="step1">
+                        <input type="text" id="shopName" placeholder="Shop Name" />
+                        <textarea id="instructions" placeholder="Give your instructions..."></textarea>
+                        <button onclick="showStep2('${latlng.lat}', '${latlng.lng}')">Next</button>
+                    </div>
+                    <div id="step2" style="display: none;">
+                        <input type="text" id="deliveryAddress" placeholder="Your Delivery Address" />
+                        <div class="button-group">
+                            <button class="icon-button" onclick="showStep1()">
+                                <img src="https://hibusm.s3.eu-north-1.amazonaws.com/left-arrow+(1).png" alt="Back" />
+                            </button>
+                            <button onclick="submitDelivery('${latlng.lat}', '${latlng.lng}')">Submit</button>
+                        </div>
+                    </div>
+                    <div id="confirmation" style="display: none;" class="confirmation-message">
+                        <p>To confirm your order, send this order code via WhatsApp:</p>
+                        <p class="order-code" id="orderCode"></p>
+                        <a href="#" id="whatsappLink" class="confirmation-button" target="_blank">Confirm Order</a>
+                    </div>
+                </div>
+            `;
+
+            L.popup()
+                .setLatLng(latlng)
+                .setContent(popupContent)
+                .openOn(map);
+
+            // Adjust popup position to fit within screen bounds
+            adjustPopupPosition();
+        }
+
+        // Function to show step 2 of the form
+        function showStep2(lat, lng) {
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+        }
+
+        // Function to show step 1 of the form
+        function showStep1() {
+            document.getElementById('step1').style.display = 'block';
+            document.getElementById('step2').style.display = 'none';
+        }
+
+        // Function to adjust popup position to stay within screen bounds
+        function adjustPopupPosition() {
+            const popupContainer = document.querySelector('.leaflet-popup-content');
+            if (popupContainer) {
+                const rect = popupContainer.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+
+                if (rect.right > viewportWidth) {
+                    popupContainer.style.left = `${viewportWidth - rect.width - 10}px`;
+                }
+                if (rect.bottom > viewportHeight) {
+                    popupContainer.style.top = `${viewportHeight - rect.height - 10}px`;
+                }
+            }
+        }
+
+        // Function to generate a random order code
+        function generateOrderCode() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let code = '';
+            for (let i = 0; i < 6; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+
+        // Function to submit the delivery information
+        function submitDelivery(lat, lng) {
+            const shopName = document.getElementById('shopName').value;
+            const instructions = document.getElementById('instructions').value;
+            const deliveryAddress = document.getElementById('deliveryAddress').value;
+
+            if (shopName && instructions && deliveryAddress) {
+                const orderCode = generateOrderCode();
+                const date01 = `${lat}-${lng}-${Date.now()}`;
+
+                // Save the delivery to DynamoDB
+                saveDelivery(date01, lat, lng, shopName, instructions, deliveryAddress, orderCode);
+
+                // Update the popup content to show confirmation message
+                const popup = document.querySelector('.leaflet-popup-content');
+                if (popup) {
+                    document.getElementById('step1').style.display = 'none';
+                    document.getElementById('step2').style.display = 'none';
+                    document.getElementById('confirmation').style.display = 'block';
+                    document.getElementById('orderCode').textContent = orderCode;
+                    document.getElementById('whatsappLink').href = `http://wa.me/32467620291?text=Order%20Code:%20${orderCode}`;
+                }
+
+                // Optionally close the popup or keep it open
+                // map.closePopup();
+            } else {
+                alert('Please fill in all the fields.');
+            }
+        }
+
+        // Function to save delivery information to DynamoDB
+        function saveDelivery(date01, lat, lng, shopName, instructions, deliveryAddress, orderCode) {
+            const params = {
+                TableName: tableName,
+                Item: {
+                    date01: date01,
+                    lat: lat,
+                    lng: lng,
+                    shopName: shopName,
+                    instructions: instructions,
+                    deliveryAddress: deliveryAddress,
+                    orderCode: orderCode,
+                    timestamp: new Date().toISOString()
+                }
+            };
+
+            console.log('Saving to DynamoDB:', params);
+
+            dynamoDB.put(params, function(err, data) {
+                if (err) {
+                    console.error('Error saving delivery to DynamoDB:', err);
+                    alert('Error saving delivery to DynamoDB: ' + err.message);
+                } else {
+                    console.log('Successfully saved delivery to DynamoDB:', data);
+                }
+            });
+        }
+
+       // Load saved deliveries from DynamoDB without showing them on the map
+function loadDeliveries() {
+    const params = {
+        TableName: tableName
+    };
+
+    dynamoDB.scan(params, function(err, data) {
+        if (err) {
+            console.error('Unable to fetch deliveries from DynamoDB:', err);
+            return;
+        }
+
+        console.log('Fetched items:', data.Items);
+        
+        // No need to add markers to the map
+        // The function has been adjusted to avoid showing data on the map
+    });
+}
+
+
+        // Attach the click event handler
+        map.on('click', onMapClick);
+
+        // Load saved deliveries on page load
+        loadDeliveries();
+
+        
+    </script>
+</body>
+</html>
+
