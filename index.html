@@ -26,7 +26,8 @@
     <!-- iOS Viewport Adjustment -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -177,6 +178,26 @@ footer {
         padding: 3px;
     }
 }
+
+h1, footer {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #df3056; /* Your header/footer color */
+    color: #ffffff; /* White text color */
+    text-align: center;
+    padding: 4px;
+}
+
+h1 {
+    top: 0; /* Stick to the top */
+}
+
+footer {
+    bottom: 0; /* Stick to the bottom */
+}
+
 
 
     </style>
@@ -406,15 +427,19 @@ function loadDeliveries() {
 
         // Load saved deliveries on page load
         loadDeliveries();
+		
+		function adjustLayout() {
+    document.body.style.height = window.innerHeight + 'px';
+}
+
+window.addEventListener('resize', adjustLayout);
+window.addEventListener('orientationchange', adjustLayout);
+
 
         
     </script>
 </body>
 </html>
-
-
-
-
 
 
 
