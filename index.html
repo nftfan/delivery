@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,30 +112,31 @@
         
         h1 {
             text-align: center;
+			background-color: #df3056;
             padding: 10px;
-            font-size: 1.5em;
+            font-size: 12px;
             margin: 0;
             position: absolute;
             width: 100%;
-            background: rgba(0, 0, 0, 0.7);
+           
             color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            
             z-index: 1000;
         }
         @media only screen and (max-width: 600px) {
             .popup-content {
-                font-size: 12px;
+                font-size: 11px;
             }
             .popup-content input, .popup-content textarea {
-                font-size: 12px;
+                font-size: 11px;
             }
             .popup-content button {
-                font-size: 12px;
-                padding: 8px;
+                font-size: 11px;
+                padding: 3px;
             }
             h1 {
-                font-size: 1.2em;
-                padding: 8px;
+                font-size: 10px;
+                padding: 3px;
             }
         }
     </style>
@@ -168,13 +170,15 @@
         ]);
 
         // Initialize the map with a view focused on Leuven, Belgium
-        const map = L.map('map', {
-            minZoom: 14,
-            maxZoom: 19,
-            maxBounds: bounds,
-            maxBoundsViscosity: 1.0,
-            zoomControl: true
-        }).fitBounds(bounds);
+        // Initialize the map with a view focused on Leuven, Belgium
+const map = L.map('map', {
+    minZoom: 14,
+    maxZoom: 19,
+    maxBounds: bounds,
+    maxBoundsViscosity: 1.0,
+    zoomControl: false  // Disable the default zoom control to hide the buttons
+}).fitBounds(bounds);
+
 
         // Add OpenStreetMap tile layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
