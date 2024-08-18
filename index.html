@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -157,6 +158,26 @@
     vertical-align: middle; /* Aligns the icon vertically with the text */
 }
 
+footer {
+    text-align: center;
+    background-color: #df3056; /* Same color as the header */
+    padding: 4px;
+    font-size: 10px;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #ffffff; /* White text color */
+    z-index: 1000;
+}
+
+@media only screen and (max-width: 600px) {
+    footer {
+        font-size: 10px;
+        padding: 3px;
+    }
+}
+
 
     </style>
 </head>
@@ -172,6 +193,10 @@
 </h1>
 
     <div id="map"></div>
+	<footer>
+    Rider is online
+</footer>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.140.0.min.js"></script>
     <script>
@@ -386,6 +411,10 @@ function loadDeliveries() {
     </script>
 </body>
 </html>
+
+
+
+
 
 
 
