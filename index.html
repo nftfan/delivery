@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,10 +136,41 @@
                 padding: 3px;
             }
         }
+		h1 {
+    position: relative;
+}
+
+.help-icon {
+    position: absolute;
+    right: 25px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px; /* Adjust size as needed */
+    height: 20px;
+	border-radius: 5px;
+}
+.cycling-icon {
+    border-radius: 5px; /* Makes the corners round */
+    width: 20px; /* Adjust size as needed */
+    height: 20px;
+    margin-right: 10px; /* Adds space between the icon and the title text */
+    vertical-align: middle; /* Aligns the icon vertically with the text */
+}
+
+
     </style>
 </head>
 <body>
-    <h1>Personal Delivery Leuven</h1>
+   
+	<h1>
+	 <img src="https://hibusm.s3.eu-north-1.amazonaws.com/cycling.gif" alt="Cycling Icon" class="cycling-icon">
+	 
+    Personal Delivery Leuven
+    <a href="https://www.leuvenflyers.com/" target="_blank">
+        <img src="https://hibusm.s3.eu-north-1.amazonaws.com/question.png" alt="Help" class="help-icon">
+    </a>
+</h1>
+
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.140.0.min.js"></script>
