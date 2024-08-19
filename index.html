@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -208,7 +209,7 @@ footer {
 	<h1>
 	 <img src="https://hibusm.s3.eu-north-1.amazonaws.com/cycling.gif" alt="Cycling Icon" class="cycling-icon">
 	 
-    Personal Delivery Leuven
+    Pick & Bring Leuven
     <a href="https://www.leuvenflyers.com/" target="_blank">
         <img src="https://hibusm.s3.eu-north-1.amazonaws.com/question.png" alt="Help" class="help-icon">
     </a>
@@ -216,7 +217,7 @@ footer {
 
     <div id="map"></div>
 	<footer>
-    The delivery man is available.
+    We pick & bring your orders.
 	<img src="https://hibusm.s3.eu-north-1.amazonaws.com/boxing.gif" alt="Cycling Icon" class="cycling-icon">
 </footer>
 
@@ -278,7 +279,7 @@ const map = L.map('map', {
                 <div class="popup-content">
                     <div id="step1">
                         <input type="text" id="shopName" placeholder="Shop Name" />
-                        <textarea id="instructions" placeholder="Give your instructions..."></textarea>
+                        <textarea id="instructions" placeholder="Write your order details..."></textarea>
                         <button onclick="showStep2('${latlng.lat}', '${latlng.lng}')">Next</button>
                     </div>
                     <div id="step2" style="display: none;">
@@ -291,9 +292,9 @@ const map = L.map('map', {
                         </div>
                     </div>
                     <div id="confirmation" style="display: none;" class="confirmation-message">
-                        <p>To confirm your order, send this order code via WhatsApp:</p>
+                        <p>To confirm your order, send this code via WhatsApp:</p>
                         <p class="order-code" id="orderCode"></p>
-                        <a href="#" id="whatsappLink" class="confirmation-button" target="_blank">Confirm Order</a>
+                        <a href="#" id="whatsappLink" class="confirmation-button" target="_blank">Send Code</a>
                     </div>
                 </div>
             `;
@@ -442,6 +443,10 @@ window.addEventListener('orientationchange', adjustLayout);
     </script>
 </body>
 </html>
+
+
+
+
 
 
 
