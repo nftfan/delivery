@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Instructions - Personal Delivery</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- iOS Web App Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Personal Delivery">
+    
+    <!-- iOS Icons -->
+    <link rel="apple-touch-icon" href="https://hibusm.s3.eu-north-1.amazonaws.com/192.png">
+    
+    <!-- iOS Splash Screen -->
+    <link rel="apple-touch-startup-image" href="https://hibusm.s3.eu-north-1.amazonaws.com/192.png">
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="https://raw.githubusercontent.com/nftfan/delivery/main/delivery.json">
+    <!-- Viewport Adjustment -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f0f2f5;
+        }
+        
+        .content {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #e0e0e0; /* Soft grey background color */
+            border-radius: 10px;
+            margin: 20px;
+            
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #df3056;
+            padding: 4px;
+            font-size: 12px;
+            margin: 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            color: #ffffff;
+            z-index: 1000;
+        }
+
+        h1 {
+            top: 0;
+            margin: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #df3056;
+            color: #ffffff;
+            text-align: center;
+            position: fixed;
+            line-height: 40px; /* Adjust line-height to vertically center text */
+            font-size: 12px;
+            height: 40px; /* Set a fixed height */
+        }
+
+        .help-icon {
+            position: absolute;
+            right: 10px; /* Adjust as needed */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+        }
+
+        .cycling-icon {
+            border-radius: 5px;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 10px;
+                line-height: 30px;
+                height: 30px;
+            }
+            .help-icon, .cycling-icon {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>
+    <img src="https://hibusm.s3.eu-north-1.amazonaws.com/cycling.gif" alt="Cycling Icon" class="cycling-icon">
+    Pick & Bring Help
+    <a href="https://www.leuvenflyers.com/" target="_blank">
+        <img src="https://hibusm.s3.eu-north-1.amazonaws.com/question.png" alt="Help" class="help-icon">
+    </a>
+</h1>
+
+<div class="content">
+    <h2>How to Use Pick & Bring ?</h2>
+    <p><strong>Step 1:</strong> Order online. Select either Pickup or Takeout and pay online at the shop's website.</p>
+    <p><strong>Step 2:</strong> Open the Pick & Bring map and click on the shop from where you want us to pick and bring your order, then follow the instructions.</p>
+    <p><strong>Step 3:</strong> Confirm your pick up on WhatsApp.</p>
+	<p><strong>The Pick & Bring fee is 5€ per order. </strong> </p>
+	<p><strong>Receive Order:</strong> Delivery Man will update you on arrival in WhatsApp.  </p>
+	<p><strong>Payment Options</strong> We accept Cash, Bancontact, Visa, and Mastercard.  </p>
+</div>
+
+<footer>
+    We pick & bring your orders.
+    <img src="https://hibusm.s3.eu-north-1.amazonaws.com/boxing.gif" alt="Cycling Icon" class="cycling-icon">
+</footer>
+
+</body>
+</html>
