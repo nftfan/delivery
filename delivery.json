@@ -1,18 +1,18 @@
 {
   "name": "PersonalDelivery",
-  "short_name": "PD",
+  "short_name": "Pick&Bring",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "https://hibusm.s3.eu-north-1.amazonaws.com/192.png",
+      "src": "https://raw.githubusercontent.com/nftfan/delivery/main/Untitled%20design%20(22).png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://hibusm.s3.eu-north-1.amazonaws.com/Untitled+design+(3)512.png",
+      "src": "https://raw.githubusercontent.com/nftfan/delivery/main/Untitled%20design%20(22).png",
       "sizes": "512x512",
       "type": "image/png"
     }
