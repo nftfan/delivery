@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Instructions - Personal Delivery</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- iOS Web App Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Personal Delivery">
+    
+    <!-- iOS Icons -->
+    <link rel="apple-touch-icon" href="https://hibusm.s3.eu-north-1.amazonaws.com/192.png">
+    
+    <!-- iOS Splash Screen -->
+    <link rel="apple-touch-startup-image" href="https://hibusm.s3.eu-north-1.amazonaws.com/192.png">
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="https://raw.githubusercontent.com/nftfan/delivery/main/delivery.json">
+    <!-- Viewport Adjustment -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+        
+        .content {
+            padding: 40px 20px;
+            text-align: left;
+            background-color: #e0e0e0; /* Soft grey background color */
+            border-radius: 10px;
+            margin: 20px;
+			
+            
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+		h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+		h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #df3056;
+            padding: 4px;
+            font-size: 12px;
+            margin: 0;
+            position: fixed; /* Change from absolute to fixed */
+            bottom: 0;
+            width: 100%;
+            color: #ffffff;
+            z-index: 1000;
+        }
+
+        h1 {
+            top: 0;
+            margin: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #df3056;
+            color: #ffffff;
+            text-align: center;
+            position: fixed;
+            line-height: 40px; /* Adjust line-height to vertically center text */
+            font-size: 12px;
+            height: 40px; /* Set a fixed height */
+        }
+
+        .help-icon {
+            position: absolute;
+            right: 10px; /* Adjust as needed */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+        }
+
+        .cycling-icon {
+            border-radius: 5px;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* PayPal Section */
+        .paypal-section {
+            background-color: #ffffff; /* White background for contrast */
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 400px;
+        }
+
+        .paypal-section h2 {
+            font-size: 18px;
+            color: #df3056; /* Matching title color */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 10px;
+                line-height: 30px;
+                height: 30px;
+            }
+            .help-icon, .cycling-icon {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>
+    <img src="https://raw.githubusercontent.com/nftfan/delivery/main/credit-card.gif" alt="Cycling Icon" class="cycling-icon">
+    Pick & Bring Leuven
+</h1>
+
+
+
+<!-- PayPal Button Section -->
+<div class="paypal-section">
+    <h2>Pay at delivery:</h2>
+	<p><strong>The Pick & Bring fee is 5€ per order. </strong></p>
+    <div id="paypal-container-TWZPE475RDPXL"></div> <!-- Updated container ID -->
+</div>
+
+<footer>
+    We pick & bring your orders.
+    <img src="https://hibusm.s3.eu-north-1.amazonaws.com/boxing.gif" alt="Cycling Icon" class="cycling-icon">
+</footer>
+
+<!-- PayPal Script -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAA4no69vJReWGVH4pxdduEcLTOw_OMcRd7XTBXWymZbvFN_L4NzuyYOCEMxTIeu5WW6pdRt-f7MFjgKLg&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
+<div id="paypal-container-TWZPE475RDPXL"></div>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "TWZPE475RDPXL",
+  }).render("#paypal-container-TWZPE475RDPXL")
+</script>
+
+
+
+</body>
+</html>
