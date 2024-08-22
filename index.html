@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,109 +43,187 @@
             width: 100vw;
         }
         .popup-content {
-            max-width: 150px;
-            width: 150px;
-			
-            color: #333;
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 0;
-            box-sizing: border-box;
-            font-size: 12px;
-            font-family: Arial, sans-serif;
-        }
-        .popup-content input, .popup-content textarea {
-            width: calc(100% - 16px);
-            padding: 12px;
-            margin-bottom: 2px;
-            border-radius: 4px;
+    width: 200px; /* Make it more compact */
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2px;
+    
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.popup-title {
+    background-color: #df3056;
+    color: #fff;
+    padding: 2px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.chat-box {
+    height: 120px; /* Adjust height to fit content */
+    overflow-y: auto;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 2px;
+    background-color: #f9f9f9;
+}
+
+.chat-input {
+    width: calc(100% - 20px);
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+button {
+    width: calc(100% - 120px);
+    padding: 2px;
+    border: 1px solid #df3056; /* Specify border width, style, and color */
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #df3056;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #f9f9f9;
+}
+
+        .chat-box {
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+            overflow-y: auto;
+            padding: 5px;
             border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
             background-color: #f9f9f9;
+        }
+        .chat-message {
+            margin-bottom: 8px;
+			font-size: 11px;
+        }
+        .chat-message .message {
+            background-color: #e1ffc7;
+            padding: 5px;
+            border-radius: 4px;
+            display: inline-block;
+			font-size: 11px;
+        }
+        .chat-message .timestamp {
+            font-size: 9px;
+            color: #aaa;
+            margin-left: 5px;
+        }
+        .chat-input {
+            width: calc(100% - 20px);
+            padding: 2px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
             box-sizing: border-box;
+            font-size: 10px;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        h1 {
+            text-align: center;
+            background-color: #df3056;
+            padding: 10px;
             font-size: 12px;
+            margin: 0;
+            position: fixed;
+            width: 100%;
+            color: #ffffff;
+            z-index: 1000;
         }
-        .popup-content textarea {
-            height: 80px;
-            resize: vertical;
+        footer {
+            text-align: center;
+            background-color: #df3056;
+            padding: 4px;
+            font-size: 12px;
+            margin: 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            color: #ffffff;
+            z-index: 1000;
         }
-        .popup-content button {
-            width: calc(100% - 32px);
-            padding: 8px;
+        #search-container {
+            position: fixed;
+            bottom: 70px; /* Adjust to ensure visibility above footer */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Added shadow for better visibility */
+            z-index: 1000; /* Ensures it stays on top of other elements */
+        }
+        #search-input {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 5px;
+            width: 200px; /* Adjust as needed */
+        }
+        #search-button {
+            padding: 5px 10px;
             border: none;
             border-radius: 4px;
             background-color: #4CAF50;
             color: #fff;
             font-size: 12px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 8px;
         }
-        .popup-content button:hover {
+        #search-button:hover {
             background-color: #45a049;
-        }
-        
-        .icon-button img {
-            width: 10px;
-            height: 10px;
-        }
-        .confirmation-message {
-            text-align: left;
-            margin-top: 10px;
-        }
-        .order-code {
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .confirmation-button {
-            background-color: #25D366;
-            border: none;
-            border-radius: 4px;
-            color: #ffffff;
-            font-size: 14px;
-			font-color: #ffffff;
-            cursor: pointer;
-            padding: 8px;
-            text-align: center;
-            width: 100%;
-            text-decoration: none;
-            display: block;
-            margin-top: 8px;
-        }
-        
-        h1 {
-            text-align: center;
-			background-color: #df3056;
-            padding: 10px;
-            font-size: 12px;
-            margin: 0;
-            position: absolute;
-            width: 100%;
-           
-            color: #ffffff;
-            
-            z-index: 1000;
         }
         @media only screen and (max-width: 600px) {
             .popup-content {
                 font-size: 11px;
             }
-            .popup-content input, .popup-content textarea {
+            .popup-content textarea, .popup-content button, .chat-input {
                 font-size: 11px;
             }
-            .popup-content button {
-                font-size: 11px;
-                padding: 3px;
-            }
-            h1 {
+            h1, footer {
                 font-size: 10px;
                 padding: 3px;
             }
+            #search-input {
+                width: 150px; /* Adjust as needed */
+            }
+            #search-button {
+                font-size: 10px;
+            }
         }
-		h1 {
-    position: relative;
-}
-
-.help-icon {
+		
+		.help-icon {
     position: absolute;
     right: 25px; /* Adjust as needed */
     top: 50%;
@@ -158,83 +239,36 @@
     transform: translateY(-50%);
     width: 20px; /* Adjust size as needed */
     height: 20px;
-	border-radius: 5px;
+	border-radius: 2px;
 }
+
 .cycling-icon {
-    border-radius: 5px; /* Makes the corners round */
+    border-radius: 0px; /* Makes the corners round */
     width: 20px; /* Adjust size as needed */
     height: 20px;
     margin-right: 10px; /* Adds space between the icon and the title text */
     vertical-align: middle; /* Aligns the icon vertically with the text */
+	border: 1px solid #ffffff; /
 }
-
-footer {
-    text-align: center;
-    background-color: #df3056; /* Same color as the header */
-    padding: 4px;
-    font-size: 12px;
-    margin: 0;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    color: #ffffff; /* White text color */
-    z-index: 1000;
-}
-
-@media only screen and (max-width: 600px) {
-    footer {
-        font-size: 10px;
-        padding: 3px;
-    }
-}
-
-h1, footer {
-    position: fixed;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #df3056; /* Your header/footer color */
-    color: #ffffff; /* White text color */
-    text-align: center;
-    padding: 4px;
-}
-
-h1 {
-    top: 0; /* Stick to the top */
-}
-
-footer {
-    bottom: 0; /* Stick to the bottom */
-}
-
-
 
     </style>
 </head>
 <body>
-   
-	<h1>
-	 <img src="https://hibusm.s3.eu-north-1.amazonaws.com/cycling.gif" alt="Cycling Icon" class="cycling-icon">
-	 
-    Pick & Bring Leuven
-	<a href="https://delivery.leuvenflyers.com/pay/" target="_blank">
+    <h1>  <img src="https://raw.githubusercontent.com/nftfan/delivery/main/Untitled%20design%20(23)929292.png" alt="Cycling Icon" class="cycling-icon"> Pick & Bring Leuven <a href="https://delivery.leuvenflyers.com/pay/" target="_blank">
         <img src="https://raw.githubusercontent.com/nftfan/delivery/main/credit-card.gif" alt="Helpp" class="helpp-icon">
-    </a>
-    <a href="https://delivery.leuvenflyers.com/help/" target="_blank">
+    </a> <a href="https://delivery.leuvenflyers.com/help/" target="_blank">
         <img src="https://hibusm.s3.eu-north-1.amazonaws.com/question.png" alt="Help" class="help-icon">
-    </a>
-</h1>
-
+    </a></h1>
     <div id="map"></div>
-	<footer>
-    Click on any shop to start.
-	<img src="https://hibusm.s3.eu-north-1.amazonaws.com/boxing.gif" alt="Cycling Icon" class="cycling-icon">
-</footer>
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Enter order number" />
+        <button id="search-button">Search</button>
+    </div>
+    <footer>Click on any shop to start your order.</footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.140.0.min.js"></script>
     <script>
-        // AWS Configuration
         AWS.config.update({
             region: 'eu-north-1',
             credentials: new AWS.Credentials('AKIAVRUVVVUM73M5ULGL', '3CaIv7G5VbNfue6j5g7EOZwAKYPuT8c9VL40QZIx')
@@ -242,8 +276,8 @@ footer {
 
         var dynamoDB = new AWS.DynamoDB.DocumentClient();
         var tableName = 'date01';
+        var chatIntervals = {};  // To keep track of intervals for different chat boxes
 
-        // Define the bounds for Leuven, Belgium
         const bounds = L.latLngBounds([
             [50.881105905697815, 4.679918289184571],
             [50.871032302986535, 4.68395233154297],
@@ -256,23 +290,18 @@ footer {
             [50.88587115248574, 4.6830081939697275]
         ]);
 
-        // Initialize the map with a view focused on Leuven, Belgium
-        // Initialize the map with a view focused on Leuven, Belgium
-const map = L.map('map', {
-    minZoom: 14,
-    maxZoom: 19,
-    maxBounds: bounds,
-    maxBoundsViscosity: 1.0,
-    zoomControl: false  // Disable the default zoom control to hide the buttons
-}).fitBounds(bounds);
+        const map = L.map('map', {
+            minZoom: 14,
+            maxZoom: 19,
+            maxBounds: bounds,
+            maxBoundsViscosity: 1.0,
+            zoomControl: false
+        }).fitBounds(bounds);
 
-
-        // Add OpenStreetMap tile layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19
         }).addTo(map);
 
-        // Restrict map movement to within bounds
         map.on('moveend', function() {
             if (map.getBounds().intersects(bounds)) {
                 return;
@@ -280,176 +309,261 @@ const map = L.map('map', {
             map.setView(bounds.getCenter(), map.getZoom());
         });
 
-        // Function to handle map clicks and show the input box
         function onMapClick(e) {
-            const latlng = e.latlng;
+    const latlng = e.latlng;
+    const orderCode = generateOrderCode();
+    const date01 = `${latlng.lat}-${latlng.lng}-${Date.now()}`;
+    const timestamp = new Date().toISOString(); // ISO format for the timestamp
 
-            // Create a popup with the form
-            const popupContent = `
-                <div class="popup-content">
-                    <div id="step1">
-                        <input type="text" id="shopName" placeholder="Shop Name" />
-                        <textarea id="instructions" placeholder="What to pick and bring?"></textarea>
-                        <button onclick="showStep2('${latlng.lat}', '${latlng.lng}')">Next</button>
-                    </div>
-                    <div id="step2" style="display: none;">
-                        <input type="text" id="deliveryAddress" placeholder="Your Delivery Address" />
-                        <div class="button-group">
-                            <button class="icon-button" onclick="showStep1()">
-                                <img src="https://hibusm.s3.eu-north-1.amazonaws.com/left-arrow+(1).png" alt="Back" />
-                            </button>
-                            <button onclick="submitDelivery('${latlng.lat}', '${latlng.lng}')">Submit</button>
-                        </div>
-                    </div>
-                    <div id="confirmation" style="display: none;" class="confirmation-message">
-                        <p>To confirm your order, send this code via WhatsApp:</p>
-                        <p class="order-code" id="orderCode"></p>
-                        <a href="#" id="whatsappLink" class="confirmation-button" target="_blank">Send Code</a>
-                    </div>
-                </div>
-            `;
+    const popupContent = `
+        <div class="popup-content">
+    <div class="popup-title">Order Code: ${orderCode}</div>
+    <div class="chat-box" id="chatBox-${date01}"></div>
+    <textarea id="chatInput-${date01}" class="chat-input" placeholder="Type your message here..."></textarea>
+    <button onclick="sendMessage('${orderCode}', '${date01}')">
+        <img src="https://hibusm.s3.eu-north-1.amazonaws.com/send-message.png" alt="Send" style="width: 20px; height: 20px;">
+    </button>
+</div>
 
-            L.popup()
-                .setLatLng(latlng)
-                .setContent(popupContent)
-                .openOn(map);
 
-            // Adjust popup position to fit within screen bounds
-            adjustPopupPosition();
+    `;
+
+    L.popup()
+        .setLatLng(latlng)
+        .setContent(popupContent)
+        .openOn(map);
+
+    // Trigger Telegram Notification
+    sendTelegramNotification(orderCode, latlng);
+
+    const params = {
+        TableName: tableName,
+        Item: {
+            date01: date01,
+            orderCode: orderCode,
+            coordinates: {
+                lat: latlng.lat,
+                lng: latlng.lng
+            },
+            chat: [{
+                message: 'Welcome to Pick & Bring! Please share the name of the shop and item details you want me to pick & bring.',
+                timestamp: new Date().toLocaleTimeString()
+            }],
+            clickTimestamp: timestamp // Adding timestamp to the item
         }
+    };
 
-        // Function to show step 2 of the form
-        function showStep2(lat, lng) {
-            document.getElementById('step1').style.display = 'none';
-            document.getElementById('step2').style.display = 'block';
+    dynamoDB.put(params, function(err, data) {
+        if (err) {
+            console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            console.log("Added item:", JSON.stringify(data, null, 2));
         }
+    });
 
-        // Function to show step 1 of the form
-        function showStep1() {
-            document.getElementById('step1').style.display = 'block';
-            document.getElementById('step2').style.display = 'none';
-        }
+    loadChatMessages(date01);
+}
 
-        // Function to adjust popup position to stay within screen bounds
-        function adjustPopupPosition() {
-            const popupContainer = document.querySelector('.leaflet-popup-content');
-            if (popupContainer) {
-                const rect = popupContainer.getBoundingClientRect();
-                const viewportWidth = window.innerWidth;
-                const viewportHeight = window.innerHeight;
 
-                if (rect.right > viewportWidth) {
-                    popupContainer.style.left = `${viewportWidth - rect.width - 10}px`;
-                }
-                if (rect.bottom > viewportHeight) {
-                    popupContainer.style.top = `${viewportHeight - rect.height - 10}px`;
-                }
-            }
-        }
+function sendTelegramNotification(orderCode, latlng) {
+    const chatId = '2141064153'; // Your personal Telegram chat ID
+    const botToken = '7029060933:AAHHTPvCTlAs6rRp1JpPX5EcOjzrsp0-dak';
+    const { lat, lng } = latlng;
+    
+    // Construct the Google Maps link
+    const googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+    
+    // Create the message text
+    const message = `🚨 New Order Started! 🚨\nOrder Code: ${orderCode}\nLocation: [View on Google Maps](${googleMapsUrl})`;
 
-        // Function to generate a random order code
-        function generateOrderCode() {
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            let code = '';
-            for (let i = 0; i < 6; i++) {
-                code += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            return code;
-        }
+    // Encode the message for the URL
+    const encodedMessage = encodeURIComponent(message);
 
-        // Function to submit the delivery information
-        function submitDelivery(lat, lng) {
-            const shopName = document.getElementById('shopName').value;
-            const instructions = document.getElementById('instructions').value;
-            const deliveryAddress = document.getElementById('deliveryAddress').value;
+    // Create the request URL
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodedMessage}&parse_mode=Markdown`;
 
-            if (shopName && instructions && deliveryAddress) {
-                const orderCode = generateOrderCode();
-                const date01 = `${lat}-${lng}-${Date.now()}`;
-
-                // Save the delivery to DynamoDB
-                saveDelivery(date01, lat, lng, shopName, instructions, deliveryAddress, orderCode);
-
-                // Update the popup content to show confirmation message
-                const popup = document.querySelector('.leaflet-popup-content');
-                if (popup) {
-                    document.getElementById('step1').style.display = 'none';
-                    document.getElementById('step2').style.display = 'none';
-                    document.getElementById('confirmation').style.display = 'block';
-                    document.getElementById('orderCode').textContent = orderCode;
-                    document.getElementById('whatsappLink').href = `http://wa.me/32467620291?text=Order%20Code:%20${orderCode}`;
-                }
-
-                // Optionally close the popup or keep it open
-                // map.closePopup();
+    // Send the request
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                console.log('Telegram notification sent successfully');
             } else {
-                alert('Please fill in all the fields.');
+                console.error('Error sending Telegram notification:', data);
             }
+        })
+        .catch(error => console.error('Fetch error:', error));
+}
+
+
+
+        function loadChatMessages(date01) {
+    const params = {
+        TableName: tableName,
+        Key: {
+            date01: date01
+        }
+    };
+
+    dynamoDB.get(params, function(err, data) {
+        const chatBox = document.getElementById(`chatBox-${date01}`);
+        if (err) {
+            console.error("Unable to retrieve item. Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            const messages = data.Item?.chat || [];
+            chatBox.innerHTML = '';  // Clear existing messages
+            messages.forEach(msg => {
+                const chatMessage = document.createElement('div');
+                chatMessage.classList.add('chat-message');
+                chatMessage.innerHTML = `
+                    <div class="message">${msg.message}</div>
+                    <div class="timestamp">${msg.timestamp}</div>
+                `;
+                chatBox.appendChild(chatMessage);
+            });
+            manageChatScroll(chatBox);
+        }
+    });
+
+    // Set up or clear the interval for this chat
+    if (chatIntervals[date01]) {
+        clearInterval(chatIntervals[date01]);
+    }
+    chatIntervals[date01] = setInterval(() => loadChatMessages(date01), 1000);
+}
+
+function manageChatScroll(chatBox) {
+    // Get the current scroll position and the height of the chat box
+    const isScrolledToBottom = chatBox.scrollHeight - chatBox.clientHeight <= chatBox.scrollTop + 1;
+
+    if (isScrolledToBottom) {
+        // Scroll to the bottom if user is at the bottom
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+}
+
+
+        function generateOrderCode() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let orderCode = '';
+            for (let i = 0; i < 4; i++) {
+                orderCode += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return orderCode;
         }
 
-        // Function to save delivery information to DynamoDB
-        function saveDelivery(date01, lat, lng, shopName, instructions, deliveryAddress, orderCode) {
+        function sendMessage(orderCode, date01) {
+    const chatInput = document.getElementById(`chatInput-${date01}`);
+    const message = chatInput.value;
+    if (!message.trim()) return;
+    chatInput.value = '';
+
+    const timestamp = new Date().toLocaleTimeString();
+    const chatBox = document.getElementById(`chatBox-${date01}`);
+
+    const chatMessage = document.createElement('div');
+    chatMessage.classList.add('chat-message');
+    chatMessage.innerHTML = `
+        <div class="message">You: ${message}</div>
+        <div class="timestamp">${timestamp}</div>
+    `;
+    chatBox.appendChild(chatMessage);
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    const params = {
+        TableName: tableName,
+        Key: {
+            date01: date01
+        },
+        UpdateExpression: 'SET chat = list_append(if_not_exists(chat, :emptyList), :newChatItem)',
+        ExpressionAttributeValues: {
+            ':newChatItem': [{
+                message: `You: ${message}`,
+                timestamp: timestamp
+            }],
+            ':emptyList': []
+        }
+    };
+
+    dynamoDB.update(params, function(err, data) {
+        if (err) {
+            console.error("Unable to add message. Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            console.log("Added message:", JSON.stringify(data, null, 2));
+            // Notify Telegram about the new message
+            sendTelegramMessageNotification(orderCode, message);
+        }
+    });
+}
+
+function sendTelegramMessageNotification(orderCode, message) {
+    const chatId = '2141064153'; // Your personal Telegram chat ID
+    const botToken = '7029060933:AAHHTPvCTlAs6rRp1JpPX5EcOjzrsp0-dak';
+    const text = `📬 New Message for Order ${orderCode} 📬\nMessage: ${message}`;
+
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                console.log('Telegram notification sent successfully');
+            } else {
+                console.error('Error sending Telegram notification:', data);
+            }
+        })
+        .catch(error => console.error('Fetch error:', error));
+}
+
+
+        function searchChatBox(orderNumber) {
             const params = {
                 TableName: tableName,
-                Item: {
-                    date01: date01,
-                    lat: lat,
-                    lng: lng,
-                    shopName: shopName,
-                    instructions: instructions,
-                    deliveryAddress: deliveryAddress,
-                    orderCode: orderCode,
-                    timestamp: new Date().toISOString()
+                FilterExpression: 'orderCode = :orderCode',
+                ExpressionAttributeValues: {
+                    ':orderCode': orderNumber
                 }
             };
 
-            console.log('Saving to DynamoDB:', params);
-
-            dynamoDB.put(params, function(err, data) {
+            dynamoDB.scan(params, function(err, data) {
                 if (err) {
-                    console.error('Error saving delivery to DynamoDB:', err);
-                    alert('Error saving delivery to DynamoDB: ' + err.message);
+                    console.error("Unable to search item. Error JSON:", JSON.stringify(err, null, 2));
                 } else {
-                    console.log('Successfully saved delivery to DynamoDB:', data);
+                    const item = data.Items[0];
+                    if (item) {
+                        const latlng = L.latLng(item.coordinates.lat, item.coordinates.lng);
+                        map.setView(latlng, map.getZoom());
+                        L.popup()
+                            .setLatLng(latlng)
+                            .setContent(`
+                                <div class="popup-content">
+                                    <div class="popup-title">Order Code: ${item.orderCode}</div>
+                                    <div class="chat-box" id="chatBox-${item.date01}"></div>
+                                    <textarea id="chatInput-${item.date01}" class="chat-input" placeholder="Type your message here..."></textarea>
+                                    <button onclick="sendMessage('${item.orderCode}', '${item.date01}')">Send</button>
+                                </div>
+                            `)
+                            .openOn(map);
+
+                        loadChatMessages(item.date01);
+                    } else {
+                        alert('Order number not found.');
+                    }
                 }
             });
         }
 
-       // Load saved deliveries from DynamoDB without showing them on the map
-function loadDeliveries() {
-    const params = {
-        TableName: tableName
-    };
+        document.getElementById('search-button').addEventListener('click', function() {
+            const orderNumber = document.getElementById('search-input').value.trim();
+            if (orderNumber) {
+                searchChatBox(orderNumber);
+            }
+        });
 
-    dynamoDB.scan(params, function(err, data) {
-        if (err) {
-            console.error('Unable to fetch deliveries from DynamoDB:', err);
-            return;
-        }
-
-        console.log('Fetched items:', data.Items);
-        
-        // No need to add markers to the map
-        // The function has been adjusted to avoid showing data on the map
-    });
-}
-
-
-        // Attach the click event handler
         map.on('click', onMapClick);
-
-        // Load saved deliveries on page load
-        loadDeliveries();
-		
-		function adjustLayout() {
-    document.body.style.height = window.innerHeight + 'px';
-}
-
-window.addEventListener('resize', adjustLayout);
-window.addEventListener('orientationchange', adjustLayout);
-
-
-        
     </script>
 </body>
 </html>
+
+
+
