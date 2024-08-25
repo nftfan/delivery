@@ -328,7 +328,7 @@ button:hover {
 
     const popupContent = `
         <div class="popup-content">
-    <div class="popup-title">Order Code: ${orderCode}</div>
+    <div class="popup-title">Delivery Code: ${orderCode}</div>
     <div class="chat-box" id="chatBox-${date01}"></div>
     <textarea id="chatInput-${date01}" class="chat-input" placeholder="Type your message here..."></textarea>
     <button onclick="sendMessage('${orderCode}', '${date01}')">
@@ -385,7 +385,7 @@ function sendTelegramNotification(orderCode, latlng) {
     const googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
     
     // Create the message text
-    const message = `🚨 New Order Started! 🚨\nOrder Code: ${orderCode}\nLocation: [View on Google Maps](${googleMapsUrl})`;
+    const message = `🚨 New Order Started! 🚨\nDelivery Code: ${orderCode}\nLocation: [View on Google Maps](${googleMapsUrl})`;
 
     // Encode the message for the URL
     const encodedMessage = encodeURIComponent(message);
@@ -548,7 +548,7 @@ function sendTelegramMessageNotification(orderCode, message) {
                             .setLatLng(latlng)
                             .setContent(`
                                 <div class="popup-content">
-                                    <div class="popup-title">Order Code: ${item.orderCode}</div>
+                                    <div class="popup-title">Delivery Code: ${item.orderCode}</div>
                                     <div class="chat-box" id="chatBox-${item.date01}"></div>
                                     <textarea id="chatInput-${item.date01}" class="chat-input" placeholder="Type your message here..."></textarea>
                                     <button onclick="sendMessage('${item.orderCode}', '${item.date01}')">Send</button>
