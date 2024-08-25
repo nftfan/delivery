@@ -194,6 +194,35 @@
     We pick & bring your orders.
     <img src="https://hibusm.s3.eu-north-1.amazonaws.com/boxing.gif" alt="Cycling Icon" class="cycling-icon">
 </footer>
+ <script>
+        // Replace with your Telegram Bot Token and Chat ID
+        const botToken = '7515580049:AAHkZBOprnrY_XN53aohz80HSs8M7QJUphQ';
+        const chatId = '2141064153';
 
+        function sendNotification() {
+            // Get the page title
+            const pageTitle = document.title;
+
+            // Construct the message including the page title
+            const message = `A user has opened the page: ${pageTitle}`;
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        console.log('Notification sent successfully.');
+                    } else {
+                        console.error('Failed to send notification:', data);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Attach event listener to DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function() {
+            sendNotification();
+        });
+    </script>
 </body>
 </html>
