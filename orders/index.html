@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" href="https://raw.githubusercontent.com/nftfan/delivery/main/Untitled%20design%20(22).png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Delivery</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+	  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Delivery</title>
+    
+    <!-- iOS Web App Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Personal Delivery">
+    
+    <!-- iOS Icons (Optional, recommended to create your own) -->
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/nftfan/delivery/main/Untitled%20design%20(23)929292.png">
+    
+    <!-- iOS Splash Screen (Optional, recommended to create your own) -->
+    <link rel="apple-touch-startup-image" href="https://raw.githubusercontent.com/nftfan/delivery/main/Untitled%20design%20(22).png">
+    <!-- Add the Web App Manifest (Optional) -->
+    <link rel="manifest" href="https://raw.githubusercontent.com/nftfan/delivery/main/d2.json">
+    <!-- iOS Viewport Adjustment -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+        #orders {
+            padding: 20px;
+        }
+        .order-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            position: relative;
+        }
+        .order-item:hover {
+            background-color: #f1f1f1;
+        }
+        .order-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .order-chat {
+            max-height: 180px;
+			max-width: 180px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        .order-chat .chat-message {
+            margin-bottom: 8px;
+			font-size: 10px;
+        }
+        .order-chat .chat-message .message {
+            background-color: #e1ffc7;
+            padding: 5px;
+            border-radius: 4px;
+            display: inline-block;
+			font-size: 10px;
+        }
+        .order-chat .chat-message .timestamp {
+            font-size: 10px;
+            color: #aaa;
+            margin-left: 5px;
+        }
+        .order-chat .chat-message .rider {
+            font-weight: bold;
+            color: #df3056;
+            margin-right: 5px;
+        }
+       .chat-input {
+    width: calc(100% - 120px);
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+.reply-button {
+    width: calc(100% - 120px);
+    padding: 6px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+}
+
+        .reply-button:hover {
+            background-color: #45a049;
+        }
+        .order-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: #df3056;
+            margin-bottom: 15px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2px; /* Adjust padding as needed */
+    width: 210px; /* Adjust width as needed */
+    max-width: 100%; /* Ensure it fits on smaller screens */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional for better visibility */
+}
+
+.modal-close {
+    position: absolute;
+    top: 5px; /* Adjust positioning if needed */
+    right: 5px; /* Adjust positioning if needed */
+    background: #df3056;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+}
+
+        .modal-close:hover {
+            background: #c72a4e;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+		.modal-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #df3056;
+    margin-bottom: 5px;
+}
+
+.refresh-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.refresh-button:hover {
+    background-color: #45a049;
+}
+
+
+    </style>
+</head>
+<body>
+   
+		
+		<div id="orders">
+    <div class="order-header">
+        Orders
+        <button id="refreshButton" class="refresh-button">Refresh</button>
+    </div>
+    <div id="orderList"></div>
+</div>
+
+		
+		
+       
+
+    <!-- Chat Modal -->
+    <div id="chatModal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeChatModal()">×</button>
+        <div id="modalTitle" class="modal-title">Order Code: </div> <!-- Added title element -->
+        <div id="modalChat" class="order-chat"></div>
+        <textarea id="modalReply" class="chat-input" placeholder="Type your reply here..."></textarea>
+        <button class="reply-button" onclick="sendModalReply()">Send Reply</button>
+    </div>
+</div>
+
+
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.140.0.min.js"></script>
+    <script>
+        AWS.config.update({
+            region: 'eu-north-1',
+            credentials: new AWS.Credentials('AKIAVRUVVVUM73M5ULGL', '3CaIv7G5VbNfue6j5g7EOZwAKYPuT8c9VL40QZIx')
+        });
+
+        var dynamoDB = new AWS.DynamoDB.DocumentClient();
+        var tableName = 'date01';
+        let refreshInterval;
+        let currentOrderDate01 = null;
+
+       function fetchOrders() {
+    const params = {
+        TableName: tableName,
+        ProjectionExpression: 'date01, orderCode, clickTimestamp', // Include clickTimestamp
+        // ScanIndexForward is not used in scan operation
+    };
+
+    dynamoDB.scan(params, function(err, data) {
+        if (err) {
+            console.error("Unable to fetch orders. Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            const orders = data.Items;
+            // Sort orders by clickTimestamp in descending order
+            orders.sort((a, b) => new Date(b.clickTimestamp) - new Date(a.clickTimestamp));
+            
+            const orderList = document.getElementById('orderList');
+            orderList.innerHTML = '';
+            orders.forEach(order => {
+                const orderItem = document.createElement('div');
+                orderItem.classList.add('order-item');
+                orderItem.dataset.date01 = order.date01;
+                orderItem.textContent = `Order Code: ${order.orderCode}`;
+                orderItem.onclick = () => loadOrder(order.date01);
+                orderList.appendChild(orderItem);
+            });
+        }
+    });
+}
+
+
+        function loadOrder(date01) {
+    currentOrderDate01 = date01;  // Store the current order being viewed
+    refreshChat();  // Initial load of the chat
+    openChatModal();
+
+    // Set the order code as the modal title
+    const orderItem = document.querySelector(`.order-item[data-date01="${date01}"]`);
+    const orderCode = orderItem ? orderItem.textContent.replace('Order Code: ', '') : 'Unknown';
+    document.getElementById('modalTitle').textContent = `Order Code: ${orderCode}`;
+
+    // Start refreshing the chat every second
+    if (refreshInterval) clearInterval(refreshInterval);  // Clear any existing interval
+    refreshInterval = setInterval(refreshChat, 1000);
+}
+
+
+        function refreshChat() {
+    if (!currentOrderDate01) return;
+
+    const chatBox = document.getElementById('modalChat');
+
+    // Check if user is at the bottom
+    const atBottom = chatBox.scrollHeight - chatBox.clientHeight <= chatBox.scrollTop + 1;
+
+    const params = {
+        TableName: tableName,
+        Key: { date01: currentOrderDate01 }
+    };
+
+    dynamoDB.get(params, function(err, data) {
+        if (err) {
+            console.error("Unable to retrieve order. Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            const order = data.Item;
+            if (!order) {
+                console.error('Order not found for date01:', currentOrderDate01);
+                return;
+            }
+            chatBox.innerHTML = '';
+            order.chat.forEach(msg => {
+                const chatMessage = document.createElement('div');
+                chatMessage.classList.add('chat-message');
+                chatMessage.innerHTML = `
+                    <div class="rider">Rider:</div>
+                    <div class="message">${msg.message}</div>
+                    <div class="timestamp">${msg.timestamp}</div>
+                `;
+                chatBox.appendChild(chatMessage);
+            });
+
+            // Scroll to the bottom only if the user was already at the bottom
+            if (atBottom) {
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+    });
+}
+
+
+        function openChatModal() {
+            document.getElementById('chatModal').style.display = 'flex';
+        }
+
+        function closeChatModal() {
+            document.getElementById('chatModal').style.display = 'none';
+            // Clear the interval when the modal is closed
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+                refreshInterval = null;
+            }
+            currentOrderDate01 = null;  // Clear the current order date
+        }
+
+        function sendModalReply() {
+            const modalChat = document.getElementById('modalChat');
+            const modalReply = document.getElementById('modalReply');
+            const message = modalReply.value;
+            if (!message.trim()) return;
+            modalReply.value = '';
+
+            if (!currentOrderDate01) {
+                console.error('No order selected.');
+                return;
+            }
+
+            const timestamp = new Date().toLocaleTimeString();
+            const fullMessage = `Rider: ${message}`;
+
+            const params = {
+                TableName: tableName,
+                Key: { date01: currentOrderDate01 },
+                UpdateExpression: 'SET chat = list_append(if_not_exists(chat, :emptyList), :newChatItem)',
+                ExpressionAttributeValues: {
+                    ':newChatItem': [{
+                        message: fullMessage,
+                        timestamp: timestamp
+                    }],
+                    ':emptyList': []
+                }
+            };
+
+            dynamoDB.update(params, function(err, data) {
+                if (err) {
+                    console.error("Unable to send reply. Error JSON:", JSON.stringify(err, null, 2));
+                } else {
+                    console.log("Reply sent:", JSON.stringify(data, null, 2));
+                    const chatMessage = document.createElement('div');
+                    chatMessage.classList.add('chat-message');
+                    chatMessage.innerHTML = `
+                        <div class="rider">Rider:</div>
+                        <div class="message">${message}</div>
+                        <div class="timestamp">${timestamp}</div>
+                    `;
+                    modalChat.appendChild(chatMessage);
+                    modalChat.scrollTop = modalChat.scrollHeight;
+                }
+            });
+        }
+
+        // Highlight selected order
+        document.getElementById('orderList').addEventListener('click', function(event) {
+            if (event.target.classList.contains('order-item')) {
+                document.querySelectorAll('.order-item').forEach(item => item.classList.remove('selected'));
+                event.target.classList.add('selected');
+                loadOrder(event.target.dataset.date01);
+            }
+        });
+
+        fetchOrders();
+		
+		document.getElementById('refreshButton').addEventListener('click', function() {
+    fetchOrders();
+});
+
+    </script>
+</body>
+</html>
