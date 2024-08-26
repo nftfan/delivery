@@ -320,7 +320,7 @@ button:hover {
             map.setView(bounds.getCenter(), map.getZoom());
         });
 
-        function onMapClick(e) {
+       function onMapClick(e) {
     const latlng = e.latlng;
     const orderCode = generateOrderCode();
     const date01 = `${latlng.lat}-${latlng.lng}-${Date.now()}`;
@@ -328,15 +328,13 @@ button:hover {
 
     const popupContent = `
         <div class="popup-content">
-    <div class="popup-title">Delivery Code: ${orderCode}</div>
-    <div class="chat-box" id="chatBox-${date01}"></div>
-    <textarea id="chatInput-${date01}" class="chat-input" placeholder="Type your message here..."></textarea>
-    <button onclick="sendMessage('${orderCode}', '${date01}')">
-        <img src="https://hibusm.s3.eu-north-1.amazonaws.com/send-message.png" alt="Send" style="width: 20px; height: 20px;">
-    </button>
-</div>
-
-
+            <div class="popup-title">Delivery Code: ${orderCode}</div>
+            <div class="chat-box" id="chatBox-${date01}"></div>
+            <textarea id="chatInput-${date01}" class="chat-input" placeholder="Type your message here..."></textarea>
+            <button onclick="sendMessage('${orderCode}', '${date01}')">
+                <img src="https://hibusm.s3.eu-north-1.amazonaws.com/send-message.png" alt="Send" style="width: 20px; height: 20px;">
+            </button>
+        </div>
     `;
 
     L.popup()
@@ -357,21 +355,19 @@ button:hover {
                 lng: latlng.lng
             },
             chat: [
-    {
-        message: 'Welcome! Please note down your delivery code.',
-        timestamp: new Date().toLocaleTimeString()
-    },
-    {
-        message: 'You can reopen this chat anytime by searching your Delivery Code.',
-        timestamp: new Date().toLocaleTimeString()
-    },
-	{
-        message: 'Please wait, rider will respond to you shortly.',
-        timestamp: new Date().toLocaleTimeString()
-    }
-	
-]
-,
+                {
+                    message: `Welcome! Please note down your delivery code: ${orderCode}`,
+                    timestamp: new Date().toLocaleTimeString()
+                },
+                {
+                    message: 'You can reopen this chat anytime by searching your Delivery Code.',
+                    timestamp: new Date().toLocaleTimeString()
+                },
+                {
+                    message: 'Please wait, rider will respond to you shortly.',
+                    timestamp: new Date().toLocaleTimeString()
+                }
+            ],
             clickTimestamp: timestamp // Adding timestamp to the item
         }
     };
