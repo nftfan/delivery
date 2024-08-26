@@ -457,7 +457,7 @@ function manageChatScroll(chatBox) {
         function generateOrderCode() {
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
             let orderCode = '';
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 6; i++) {
                 orderCode += characters.charAt(Math.floor(Math.random() * characters.length));
             }
             return orderCode;
