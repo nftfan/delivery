@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Instructions - Personal Delivery</title>
+    <title>Help</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-    <!-- Viewport Adjustment -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <style>
         body {
@@ -16,44 +13,41 @@
             padding: 0;
             background-color: #f0f2f5;
         }
-        
+
         .content {
             padding: 40px 20px;
-            text-align: left;
-            background-color: #e0e0e0; /* Soft grey background color */
+            background-color: #e0e0e0;
             border-radius: 10px;
             margin: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        h2 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        h4 {
-            font-size: 16px;
-            margin-bottom: 20px;
-            color: #333;
+        h1 {
+            background-color: #df3056;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            margin: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
-        p {
-            font-size: 14px;
-            margin-bottom: 15px;
-            color: #555;
-            line-height: 1.6;
+        h1 .cycling-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 10px;
         }
 
         footer {
             text-align: center;
             background-color: #df3056;
-            padding: 4px;
+            padding: 10px;
             font-size: 12px;
             margin: 0;
             position: fixed;
@@ -61,68 +55,72 @@
             width: 100%;
             color: #ffffff;
             z-index: 1000;
-        }
-
-        h1 {
-            top: 0;
-            margin: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: #df3056;
-            color: #ffffff;
-            text-align: center;
-            position: fixed;
-            line-height: 40px;
-            font-size: 12px;
-            height: 40px;
-        }
-
-        .help-icon {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            border-radius: 5px;
-        }
-
-        .cycling-icon {
-            border-radius: 5px;
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-
-        /* PayPal Section */
-        .paypal-section {
-            background-color: #ffffff;
-            padding: 20px;
-            margin: 20px auto;
-            border-radius: 10px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            max-width: 400px;
+            align-items: center;
         }
 
-        .paypal-section h2 {
+        footer img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .faq-section {
+            margin-top: 60px;
+        }
+
+        .faq-item {
+            background-color: #fff;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            color: #333;
+        }
+
+        .faq-question::after {
+            content: '\002B'; /* Plus symbol */
+            position: absolute;
+            right: 20px;
             font-size: 18px;
-            color: #df3056;
-            margin-bottom: 20px;
-            text-align: center;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 15px;
+            font-size: 14px;
+            color: #555;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '\2212'; /* Minus symbol */
         }
 
         @media only screen and (max-width: 600px) {
             h1 {
                 font-size: 10px;
-                line-height: 30px;
-                height: 30px;
+                padding: 5px 0;
             }
-            .help-icon, .cycling-icon {
+
+            .cycling-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            footer img {
                 width: 16px;
                 height: 16px;
             }
@@ -136,68 +134,94 @@
     Pick & Bring Leuven
 </h1>
 
-<div class="content">
-    <h2>1. How to use Pick & Bring delivery service?</h2>
-    
-   
+<div class="content faq-section">
+    <div class="faq-item">
+        <div class="faq-question">1. How to use Pick & Bring delivery service?</div>
+        <div class="faq-answer">
+            <h4>Step 1: Connect with a Delivery Driver</h4>
+            <p>
+                - Open the Pick & Bring map.<br>
+                - Touch your home's location where you'd like to receive your order.<br>
+                - A unique Delivery Code (XXXX) will be generated for your delivery location. Note this code for future orders.<br>
+                - You can always open your delivery chat by searching your order code XXXX.<br>
+                - Instantly connect with a Delivery Driver via the built-in chat feature.<br>
+                - Tell the rider that you want to start an online order for pickup.<br>
+                - Once your rider is ready, proceed to Step 2.
+            </p>
 
-    <h4>Step 1: Connect with a Delivery Driver</h4>
-    <p>
-        - Open the Pick & Bring map.<br>
-        - Touch your home's location where you'd like to receive your order.<br>
-        - A unique Delivery Code (XXXX) will be genrated for your delivery location, note this code for future orders.<br>
-        - You can always open your delivery chat by searching your order code XXXX. <br>
-        - Instantly connect with a Delivery Driver via the built-in chat feature.<br>
-        - Tell the rider that you want to start an online order for pickup.
-        - Once your rider is ready proceed to step 2.
-    </p>
+            <h4>Step 2: Place Your Order Online</h4>
+            <p>
+                - Visit the website of your desired shop.<br>
+                - Choose either Pickup or Takeout for your order.<br>
+                - Complete the payment process directly on the shop's website.<br>
+                - Tell the rider to Pick & Bring the order to your address.
+            </p>
+        </div>
+    </div>
 
-     <h4>Step 2: Place Your Order Online</h4>
-    <p>
-        - Visit the website of your desired shop.<br>
-        - Choose either Pickup or Takeout for your order.<br>
-        - Complete the payment process directly on the shop's website.
-        - Tell the rider to Pick & Bring the order to your address.
-    </p>
+    <div class="faq-item">
+        <div class="faq-question">2. Pick & Bring Advance Credit Service</div>
+        <div class="faq-answer">
+            <h4>Step 1: Submit Your Shopping Request</h4>
+            <p>
+                - Connect with the rider through chat.<br>
+                - Explain the rider about your shopping instructions through the chat.
+            </p>
 
-    <h2>2. Pick & Bring Advance Credit Service</h2>
-    
-    
-    
-    <h4>Step 1: Submit Your Shopping Request</h4>
-    <p>
-        - Connect with the rider through chat.<br>
-        - Tell the rider about your shopping instructions through the chat.<br>
-       
-    </p>
+            <h4>Step 2: Payment & Delivery</h4>
+            <p>
+                - The Advance Credit Limit is €20, so your shopping budget must be within this amount.<br>
+                - The Delivery Driver will notify you of their arrival through the chat.<br>
+                - Pay the receipt amount plus the delivery fee upon delivery.<br>
+                - Click the payment icon on the top left side of the map to pay.
+            </p>
+        </div>
+    </div>
 
-    <h4>Step 2: Payment & Delivery</h4>
-    <p>
-        - The Advance Credit Limit is €20, so your shopping budget must be within this amount.<br>
-        - The Delivery Driver will notify you of their arrival through the chat.<br>
-        - Pay the receipt amount plus the delivery fee upon delivery.<br>
-        - Click the payment icon on the top left side of the map to pay.
-    </p>
+    <div class="faq-item">
+        <div class="faq-question">3. How to Schedule a Delivery?</div>
+        <div class="faq-answer">
+            <p>
+                - Search your order code, and you will be connected to the driver in the same chat again.<br>
+                - You can talk to the driver anytime by searching your order code.<br>
+                - Set your delivery schedule with the driver directly through the chat.
+            </p>
+        </div>
+    </div>
 
-    <h2>3. How to Schedule a Delivery?</h2>
-    <p>
-       
-        - Search your order code, and you will be connected to the driver in the same chat again.<br>
-        - You can talk to the driver anytime by searching your order code.<br>
-        - Set your delivery schedule with the driver directly through the chat.
-    </p>
+    <div class="faq-item">
+        <div class="faq-question">4. How to Pay?</div>
+        <div class="faq-answer">
+            <p>
+                - To make a payment, click on the payment icon located on the top left side of the Pick & Bring map.<br>
+                - You can pay via PayPal, credit card, or other supported payment methods.<br>
+                - Ensure the payment is done at your doorstep.<br>
+                - If you face any issues, just ask the rider through chat.
+            </p>
+        </div>
+    </div>
 
-    <h2>Add to Home Screen</h2>
-    <p>- For quick and easy access, add Pick & Bring to your home screen to use it as an app.</p>
-    
-    <h2>Delivery fee is 5€ Only!</h2>
+    <div class="faq-item">
+        <div class="faq-question">5. Add to Home Screen</div>
+        <div class="faq-answer">
+            <p>- For quick and easy access, add Pick & Bring to your home screen to use it as an app.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">6. Delivery fee is 5€ Only!</div>
+        <div class="faq-answer">
+            <p>- The delivery fee for using the Pick & Bring service is just 5€.</p>
+        </div>
+    </div>
 </div>
 
 <footer>
     We pick & bring your orders.
-    <img src="https://hibusm.s3.eu-north-1.amazonaws.com/boxing.gif" alt="Cycling Icon" class="cycling-icon">
+    <img src="https://hibusm.s3.eu-north-1.amazonaws.com/boxing.gif" alt="Boxing Icon">
 </footer>
- <script>
+
+<script>
         // Replace with your Telegram Bot Token and Chat ID
         const botToken = '7515580049:AAHkZBOprnrY_XN53aohz80HSs8M7QJUphQ';
         const chatId = '2141064153';
@@ -227,5 +251,6 @@
             sendNotification();
         });
     </script>
+
 </body>
 </html>
