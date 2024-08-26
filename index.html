@@ -356,10 +356,22 @@ button:hover {
                 lat: latlng.lat,
                 lng: latlng.lng
             },
-            chat: [{
-                message: 'Welcome to Pick & Bring! Please share the name of the shop and item details you want me to pick & bring.',
-                timestamp: new Date().toLocaleTimeString()
-            }],
+            chat: [
+    {
+        message: 'Welcome! Please note down your delivery code.',
+        timestamp: new Date().toLocaleTimeString()
+    },
+    {
+        message: 'You can reopen this chat anytime by searching your Delivery Code.',
+        timestamp: new Date().toLocaleTimeString()
+    },
+	{
+        message: 'Please wait, rider will respond to you shortly.',
+        timestamp: new Date().toLocaleTimeString()
+    }
+	
+]
+,
             clickTimestamp: timestamp // Adding timestamp to the item
         }
     };
