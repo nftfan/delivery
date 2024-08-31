@@ -2,6 +2,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -274,7 +275,7 @@ button:hover {
         <input type="text" id="search-input" placeholder="Enter Delivery Code..." />
         <button id="search-button">Search</button>
     </div>
-    <footer>Click on the map to start your order.</footer>
+    <footer>Click in the center to start.</footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.140.0.min.js"></script>
@@ -579,6 +580,49 @@ function sendTelegramMessageNotification(orderCode, message) {
         });
 
         map.on('click', onMapClick);
+		var jsonData3 = { "lng" : { "N" : "4.699659347534181" }, "lat" : { "N" : "50.87601521734375" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTCeDw8GDIiS2GDhjfjAbq9HSYQi81y0NfOQ&s', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, -32] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup('Facebook Marketplace Items <br> Delivery available.'); // Optional: add a popup
+	
+	var jsonData3 = { "lng" : { "N" : "4.690561294555665" }, "lat" : { "N" : "50.88132251839807" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://images-na.ssl-images-amazon.com/images/I/710jEDUrnBL._AC_UL600_SR600,600_.jpg', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, -32] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup('Garbage Bags <br> Delivery available.'); // Optional: add a popup
+
+
     </script>
 	 <script>
         // Replace with your Telegram Bot Token and Chat ID
@@ -612,6 +656,14 @@ function sendTelegramMessageNotification(orderCode, message) {
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 
