@@ -3,6 +3,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -621,6 +622,27 @@ var customIcon3 = L.icon({
 
 L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
     .bindPopup('Garbage Bags <br> Delivery available.'); // Optional: add a popup
+	
+	var jsonData3 = { "lng" : { "N" : "4.707606732845307" }, "lat" : { "N" : "50.88070652339176" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/nftfan/delivery/main/1200px-HEMA_Logo.svg.png', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup('HEMA <br> Delivery available.'); // Optional: add a popup
 
 
     </script>
