@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -783,6 +784,68 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
                 - Moving stuff <br>
                 - Or any other task. <br>
 		<strong> 12€/Hour </strong>
+		
+            </div>
+        </div>
+    `);
+	
+	var jsonData3 = { "lng" : { "N" : "4.6953678131103525" }, "lat" : { "N" : "50.875690260907206" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/nftfan/delivery/main/pet-food.png', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup(`
+        <div style="background-color: #a5bad3; padding: 2px; border-radius: 5px;">
+          
+            <div style="padding: 2px;">
+                <strong>Pet Food</strong> <br>
+                I can bring your pet's food. <br>
+                
+		
+            </div>
+        </div>
+    `);
+	
+	var jsonData3 = { "lng" : { "N" : "4.706182479858399" }, "lat" : { "N" : "50.882080654918774" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/nftfan/delivery/main/plant.png', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup(`
+        <div style="background-color: #fec37d; padding: 2px; border-radius: 5px;">
+          
+            <div style="padding: 2px;">
+                <strong>Plants & Flowers</strong> <br>
+                I bring Plants & Flowers. <br>
+                
 		
             </div>
         </div>
