@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -844,7 +845,47 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
         </div>
     `);
 
+var jsonData3 = { "lng" : { "N" : "4.691076278686524" }, "lat" : { "N" : "50.87758580817798" } };
 
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/nftfan/delivery/main/18.9L-Bottle.png', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup('Drinking Water <br> Delivery available.'); // Optional: add a popup
+	
+	var jsonData3 = { "lng" : { "N" : "4.705238342285157" }, "lat" : { "N" : "50.874932020410206" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/nftfan/delivery/main/cutlery.png', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup('<strong>Food </strong> <br> I can bring food from <br> any restaurant in Leuven.'); // Optional: add a popup
    
 
 
