@@ -2,6 +2,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -921,6 +922,42 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
             </div>
         </div>
     `);
+	
+	var jsonData3 = { "lng" : { "N" : "4.692535400390626" }, "lat" : { "N" : "50.87455289553552" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Animals%20and%20Nature/Dog%20Face.webp', // Use your own URL
+    iconSize: [40, 40], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup(`
+        <div style="background-color: #cdebb0; padding: 2px; border-radius: 5px;">
+            <h3 style="background-color: #b7b7b6; color: white; padding: 3px; margin: 0; border-radius: 5px 5px 0 0;">ID: PTAWAF</h3>
+            <div style="padding: 2px;">
+                <strong>Pet Sitter</strong> <br>
+                I will take your pet out <br>
+				 for a walk.  <br>
+                Nice and friendly. <br>
+                
+                
+		<strong> 10€/H</strong>
+		
+            </div>
+        </div>
+    `);
+
 
 
     </script>
