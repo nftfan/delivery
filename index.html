@@ -4,6 +4,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,25 +78,28 @@
 }
 
 .chat-input {
-    width: calc(100% - 20px);
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 13px;
-    margin-bottom: 10px;
-}
-
+            
+            padding: 0px;
+            border: 1px solid #de2f55;
+            border-radius: 24px;
+            
+            font-size: 10px;
+			background-color: #f0f0f0;
+			width: 195px;
+			
+        }
+     
 button {
     width: calc(100% - 120px);
     padding: 2px;
     border: 1px solid #df3056; /* Specify border width, style, and color */
-    border-radius: 4px;
+    border-radius: 24px;
     background-color: #ffffff;
     color: #df3056;
     font-size: 13px;
     cursor: pointer;
     transition: background-color 0.3s;
+	margin-left: 10px;
 }
 
 button:hover {
@@ -110,7 +114,7 @@ button:hover {
             padding: 5px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            margin-bottom: 2px;
+            margin-bottom: 7px;
             background-color: #f9f9f9;
         }
         .chat-message {
@@ -131,12 +135,15 @@ button:hover {
             margin-left: 2px;
         }
         .chat-input {
-            width: calc(100% - 20px);
-            padding: 2px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            
+            padding: 10px;
+            border: 1px solid #de2f55;
+            border-radius: 24px;
             box-sizing: border-box;
             font-size: 10px;
+			background-color: #f0f0f0;
+			width: 195px;
+			
         }
         ::-webkit-scrollbar {
             width: 8px;
@@ -326,7 +333,7 @@ button:hover {
             <div class="chat-box" id="chatBox-${date01}"></div>
             <textarea id="chatInput-${date01}" class="chat-input" placeholder="Type your message here..."></textarea>
             <button onclick="sendMessage('${orderCode}', '${date01}')">
-                <img src="https://hibusm.s3.eu-north-1.amazonaws.com/send-message.png" alt="Send" style="width: 20px; height: 20px;">
+                <img src="https://hibusm.s3.eu-north-1.amazonaws.com/send-message.png" alt="Send" style="width: 10px; height: 10px;">
             </button>
         </div>
     `;
