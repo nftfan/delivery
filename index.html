@@ -7,6 +7,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1040,7 +1041,7 @@ var customIcon3 = L.icon({
 L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
     .bindPopup(`
         <div style="background-color: #d2a979; padding: 2px; border-radius: 5px;">
-          
+          <h3 style="background-color: #df3056; color: white; padding: 3px; margin: 0; border-radius: 5px 5px 0 0;">Coffee Shops</h3>
             <div style="padding: 2px;">
                 <strong>Coffee Delivery</strong> <br>
                 I can bring coffee <br>
@@ -1074,6 +1075,7 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
     .bindPopup(`
         <div style="background-color: #ffffff; padding: 0px; border-radius: 5px; height: 250px; overflow-y: auto; overflow-x: hidden;">
             <div style="padding: 0px;">
+			<h3 style="background-color: #df3056; color: white; padding: 3px; margin: 0; border-radius: 5px 5px 0 0;">Events in Leuven</h3>
 			<img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/458488169_982251117271493_6388897951472308661_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=75d36f&_nc_ohc=vga7D8EpD58Q7kNvgE_d9vV&_nc_ht=scontent-bru2-1.xx&oh=00_AYB3AuKVcyiFay89VoMzxwRRrNcfrdxUFr_s0LcmHIM1xA&oe=66E1ED51" alt="Popup Image" class="popup-image">
                 <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/454969797_962257085937563_5224440015025342107_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=75d36f&_nc_ohc=WD3pUK9yZvsQ7kNvgEkgCQp&_nc_ht=scontent-bru2-1.xx&oh=00_AYD-PZKWqkELiqgeuF5fpYOvuy0rEcX-oWAWwDr2Vjpv5g&oe=66E1CDDA" alt="Popup Image" class="popup-image">
 				<img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/455849441_967888542041084_6530165618597572756_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=75d36f&_nc_ohc=17EU2VpJBCMQ7kNvgGqhffF&_nc_ht=scontent-bru2-1.xx&oh=00_AYADqA_dGpJt2aZHIOH3NHu9IqBXHfKuNQSrEvzkjGWtFg&oe=66E1BA31" alt="Popup Image" class="popup-image">
@@ -1106,6 +1108,7 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
     .bindPopup(`
         <div style="background-color: #ffffff; padding: 0px; border-radius: 5px; height: 260px; overflow-y: auto; overflow-x: hidden;">
             <div style="padding: 0px;">
+			<h3 style="background-color: #df3056; color: white; padding: 3px; margin: 0; border-radius: 5px 5px 0 0;">Pick & Bring</h3>
                 <img src="https://github.com/nftfan/delivery/blob/main/Untitled%20design%20(25).png?raw=true" alt="Popup Image" class="popup-image">
                 
             </div>
@@ -1134,7 +1137,37 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
     .bindPopup(`
         <div style="background-color: #ffffff; padding: 0px; border-radius: 5px; height: 260px; overflow-y: auto; overflow-x: hidden;">
             <div style="padding: 0px;">
+			<h3 style="background-color: #df3056; color: white; padding: 3px; margin: 0; border-radius: 5px 5px 0 0;">Pick & Bring</h3>
                 <img src="https://github.com/nftfan/delivery/blob/main/Untitled%20design%20(25).png?raw=true" alt="Popup Image" class="popup-image">
+                
+            </div>
+        </div>
+    `);
+	
+	var jsonData3 = { "lng" : { "N" : "4.69598" }, "lat" : { "N" : "50.86568" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://github.com/nftfan/delivery/blob/main/Copy%20of%20Untitled%20Design%20(2).png?raw=true', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup(`
+        <div style="background-color: #ffffff; padding: 0px; border-radius: 5px; height: 260px; overflow-y: auto; overflow-x: hidden;">
+            <div style="padding: 0px;">
+			<h3 style="background-color: #df3056; color: white; padding: 3px; margin: 0; border-radius: 5px 5px 0 0;">Add to homescreen</h3>
+                <img src="https://github.com/nftfan/delivery/blob/main/mmmnn.PNG?raw=true" alt="Popup Image" class="popup-image">
                 
             </div>
         </div>
