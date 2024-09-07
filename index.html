@@ -1053,6 +1053,39 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
     `);
 
 
+var jsonData3 = { "lng" : { "N" : "4.71000" }, "lat" : { "N" : "50.87179" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://github.com/nftfan/delivery/blob/main/Copy%20of%20Untitled%20Design%20(3).png?raw=true', // Use your own URL
+    iconSize: [35, 35], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup(`
+        <div style="background-color: #ffde59; padding: 2px; border-radius: 5px;">
+          <h3 style="background-color: #df3056; color: white; padding: 3px; margin: 0; border-radius: 5px 5px 0 0;">Gratis/Free Items</h3>
+            <div style="padding: 2px;">
+                <strong>Delivery available.</strong> <br>
+                I can pickup gratis/free items<br>
+				
+                and bring it to your address. <br> 
+				<strong>5€/Delivery Max 10kg</strong>
+		
+            </div>
+        </div>
+    `);
+
 var jsonData3 = { "lng" : { "N" : "4.709959030151368" }, "lat" : { "N" : "50.87514866181103" } };
 
 var latitude3 = parseFloat(jsonData3.lat.N);
