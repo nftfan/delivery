@@ -8,6 +8,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1116,6 +1117,72 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
 				Send a message about any <br> service you want to request.<br> 
 				Assistant will guide you further. <br>
 				For more details click the <br> help icon at the top right side.<br>
+				
+		
+            </div>
+        </div>
+    `);
+	
+	var jsonData3 = { "lng" : { "N" : "4.69138" }, "lat" : { "N" : "50.87350" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://github.com/nftfan/delivery/blob/main/Copy%20of%20Copy%20of%20Untitled%20Design%20(1).png?raw=true', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup(`
+        <div style="background-color: #ecb371; padding: 2px; border-radius: 5px;">
+          <h3 style="background-color: #7f353b; color: white; padding: 3px; margin: 0; border-radius: 5px 5px 0 0;">Bakery Delivery</h3>
+            <div style="padding: 2px;">
+                <strong>Delivery available</strong> <br>
+                I can bring items <br> from any bakery of your <br> choice in Leuven.
+				
+                
+				
+		
+            </div>
+        </div>
+    `);
+	
+	var jsonData3 = { "lng" : { "N" : "4.71335" }, "lat" : { "N" : "50.87723" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://github.com/nftfan/delivery/blob/main/Copy%20of%20Copy%20of%20Untitled%20Design%20(2).png?raw=true', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup(`
+        <div style="background-color: #ff66c4; padding: 2px; border-radius: 5px;">
+          <h3 style="background-color: #e90d91; color: white; padding: 3px; margin: 0; border-radius: 5px 5px 0 0;">Female needs</h3>
+            <div style="padding: 2px;">
+                <strong>Delivery available</strong> <br>
+                I can bring any <br> female related items.  <br>
+				
+                
 				
 		
             </div>
