@@ -6,6 +6,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,6 +68,16 @@
     font-size: 14px;
     margin-bottom: 10px;
 }
+.popup-image {
+    display: block;
+    margin: 0px auto 3px auto; /* Center the image and add margin at the top */
+    width: 180px;
+    height: auto;
+    border-radius: 4px;
+}
+
+
+
 
 .chat-box {
     height: 120px; /* Adjust height to fit content */
@@ -1006,8 +1017,9 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
             </div>
         </div>
     `);
-
-var jsonData3 = { "lng" : { "N" : "4.709959030151368" }, "lat" : { "N" : "50.87514866181103" } };
+	
+	
+	var jsonData3 = { "lng" : { "N" : "4.68859" }, "lat" : { "N" : "50.87680" } };
 
 var latitude3 = parseFloat(jsonData3.lat.N);
 var longitude3 = parseFloat(jsonData3.lng.N);
@@ -1040,7 +1052,93 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
     `);
 
 
+var jsonData3 = { "lng" : { "N" : "4.709959030151368" }, "lat" : { "N" : "50.87514866181103" } };
 
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://github.com/nftfan/delivery/blob/main/Copy%20of%20Untitled%20Design%20(8).gif?raw=true', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup(`
+        <div style="background-color: #ffffff; padding: 0px; border-radius: 5px; height: 250px; overflow-y: auto; overflow-x: hidden;">
+            <div style="padding: 0px;">
+			<img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/458488169_982251117271493_6388897951472308661_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=75d36f&_nc_ohc=vga7D8EpD58Q7kNvgE_d9vV&_nc_ht=scontent-bru2-1.xx&oh=00_AYB3AuKVcyiFay89VoMzxwRRrNcfrdxUFr_s0LcmHIM1xA&oe=66E1ED51" alt="Popup Image" class="popup-image">
+                <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/454969797_962257085937563_5224440015025342107_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=75d36f&_nc_ohc=WD3pUK9yZvsQ7kNvgEkgCQp&_nc_ht=scontent-bru2-1.xx&oh=00_AYD-PZKWqkELiqgeuF5fpYOvuy0rEcX-oWAWwDr2Vjpv5g&oe=66E1CDDA" alt="Popup Image" class="popup-image">
+				<img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/455849441_967888542041084_6530165618597572756_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=75d36f&_nc_ohc=17EU2VpJBCMQ7kNvgGqhffF&_nc_ht=scontent-bru2-1.xx&oh=00_AYADqA_dGpJt2aZHIOH3NHu9IqBXHfKuNQSrEvzkjGWtFg&oe=66E1BA31" alt="Popup Image" class="popup-image">
+				<img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/458301132_980097764153495_6453038550650563684_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=TY4nbSgygdQQ7kNvgEF0rSj&_nc_ht=scontent-bru2-1.xx&_nc_gid=Ao0sF5sHc62F8BtcV4Do-wu&oh=00_AYCPvymHorzw-Kt9lJDUkPtcqlWAgPPEg162WYzz0GSnXQ&oe=66E1E023" alt="Popup Image" class="popup-image">
+                
+            </div>
+        </div>
+    `);
+
+
+var jsonData3 = { "lng" : { "N" : "4.70643" }, "lat" : { "N" : "50.88775" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/nftfan/delivery/main/Copy%20of%20Untitled%20Design%20(5).gif', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup(`
+        <div style="background-color: #ffffff; padding: 0px; border-radius: 5px; height: 260px; overflow-y: auto; overflow-x: hidden;">
+            <div style="padding: 0px;">
+                <img src="https://github.com/nftfan/delivery/blob/main/Untitled%20design%20(25).png?raw=true" alt="Popup Image" class="popup-image">
+                
+            </div>
+        </div>
+    `);
+	
+	var jsonData3 = { "lng" : { "N" : "4.70056" }, "lat" : { "N" : "50.88955" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/nftfan/delivery/main/Copy%20of%20Untitled%20Design%20(5).gif', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup(`
+        <div style="background-color: #ffffff; padding: 0px; border-radius: 5px; height: 260px; overflow-y: auto; overflow-x: hidden;">
+            <div style="padding: 0px;">
+                <img src="https://github.com/nftfan/delivery/blob/main/Untitled%20design%20(25).png?raw=true" alt="Popup Image" class="popup-image">
+                
+            </div>
+        </div>
+    `);
 
     </script>
 	 <script>
@@ -1075,6 +1173,22 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
