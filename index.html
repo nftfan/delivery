@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1375,6 +1376,44 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
 	<img src="https://media.s-bol.com/79pJRGO94wY1/1200x860.jpg" class="popup-image">
         <img src="https://www.mleuven.be/sites/default/files/styles/image_gallery_portrait_small/public/media/image/2024-04/2021_42_00.jpg?itok=L-dG3Hia" alt="Popup Image" class="popup-image">
         <img src="https://image.slidesharecdn.com/2013toponiemenmeetin131219-140127084437-phpapp01/85/Leuven-in-de-middeleeuwen-stedelijke-ontwikkeling-straten-en-pleinen-20-320.jpg" alt="Popup Image" class="popup-image">
+    </div>
+</div>
+
+    `);
+	
+	
+	var jsonData3 = { "lng" : { "N" : "4.68799" }, "lat" : { "N" : "50.88517" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://github.com/nftfan/delivery/blob/main/Copy%20of%20Copy%20of%20Untitled%20Design%20(4).png?raw=true', // Use your own URL
+    iconSize: [30, 30], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup(`
+        <div style="background-color: #d4d3d3; padding: 0px; border-radius: 5px; height: 260px; overflow-y: auto; overflow-x: hidden;">
+    <div style="padding: 0px;">
+        <h3 style="background-color: #df3056; color: white; padding: 3px; margin: 0; border-radius: 5px 5px 0 0;">Pets of Leuven</h3>
+        <span style="background-color: #f5f5f5; padding: 5px; display: inline-block;">
+            Display your pet's photo.<br> 
+            Send your photo to: 
+            <a href="mailto:info@leuvenflyers.com">info@leuvenflyers.com</a> 
+        </span>
+        <br>
+		<img src="https://static3.pawshakecdn.com/styles/slideshow/sa/host/image/2017/03/img_20151223_161742113_0.jpg" alt="Popup Image" class="popup-image">
+        <img src="https://assets.petbacker.com/user-images/320/u_e2675821bd.6110546c8eb93.jpg" alt="Popup Image" class="popup-image">
+        
     </div>
 </div>
 
