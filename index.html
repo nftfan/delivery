@@ -1464,6 +1464,39 @@ var polygon = L.polygon(latlngs, {
   weight: 2            // Line thickness
 }).addTo(map);
 
+// Define the coordinates for the polygon
+var latlngs = [
+  [50.879521847759015, 4.700441528898219], [50.879840008104864, 4.700516614003193], [50.8799584715084, 4.700865223419087], [50.87997201016391, 4.701063662625034], [50.879728313762826, 4.701567805472622], [50.8795015395781, 4.701905688444944], [50.879213839397295, 4.70210412765093], [50.879142760255476, 4.701776971122183], [50.87909198937348, 4.701358639823102], [50.87913937553173, 4.700833044088367], [50.87926799486116, 4.700489797894259]
+];
+
+// Create the polygon with initial color
+var polygon = L.polygon(latlngs, {
+  color: 'blue',       // Line color
+  fillColor: 'yellow', // Fill color
+  fillOpacity: 0.5,    // Fill opacity
+  weight: 2            // Line thickness
+}).addTo(map);
+
+// Define an array of colors to cycle through
+var colors = ['#FF5733', '#33FF57', '#5733FF', '#FF33A6', '#A633FF', '#33FFF9'];
+var currentColorIndex = 0;
+
+// Function to change the polygon colors
+function changePolygonColor() {
+  // Change the color of the polygon's border and fill
+  polygon.setStyle({
+    color: colors[currentColorIndex],        // Change line color
+    fillColor: colors[(currentColorIndex + 1) % colors.length] // Change fill color
+  });
+
+  // Move to the next color in the array
+  currentColorIndex = (currentColorIndex + 1) % colors.length;
+}
+
+// Start the color animation every 1000 milliseconds (1 second)
+setInterval(changePolygonColor, 100);
+
+
 
 	
     </script>
@@ -1499,4 +1532,3 @@ var polygon = L.polygon(latlngs, {
     </script>
 </body>
 </html>
-
