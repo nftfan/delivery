@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -290,7 +291,7 @@ button:hover {
         <input type="text" id="search-input" placeholder="Enter User ID..." />
         <button id="search-button">Search</button>
     </div>
-    <footer>Click on your home to start a chat.</footer>
+    <footer>Click on yellow area to start a chat.</footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.140.0.min.js"></script>
@@ -1445,7 +1446,25 @@ marker3.bindPopup(`
     </div>
 `).openPopup(); // Automatically opens the popup
 
-	
+	// Define the coordinates for the polygon
+var latlngs = [
+  [50.86954236627974, 4.6879696959870785],
+  [50.8708152671652, 4.691402157928116],
+  [50.86891944466838, 4.695907264225729],
+  [50.866833950863885, 4.695092054514754],
+  [50.8666443558916, 4.691273440605316],
+  [50.86780899854158, 4.688441659503947]
+];
+
+// Create and add the polygon to the existing map without zooming into it
+var polygon = L.polygon(latlngs, {
+  color: 'blue',       // Line color
+  fillColor: 'yellow', // Fill color
+  fillOpacity: 0.5,    // Fill opacity
+  weight: 2            // Line thickness
+}).addTo(map);
+
+
 	
     </script>
 	 <script>
@@ -1480,3 +1499,4 @@ marker3.bindPopup(`
     </script>
 </body>
 </html>
+
