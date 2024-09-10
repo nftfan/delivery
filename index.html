@@ -2,6 +2,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -588,6 +589,47 @@ function sendTelegramMessageNotification(orderCode, message) {
         });
 
         map.on('click', onMapClick);
+		
+		
+		// Define the custom icon
+const customIcon = L.icon({
+    iconUrl: 'https://github.com/nftfan/delivery/blob/main/Copy%20of%20Untitled%20Design%20(7).png?raw=true',
+    iconSize: [7, 7], // Size of the icon
+    iconAnchor: [0, 0], // Adjusted anchor point
+    popupAnchor: [0, 0] // Adjust popup anchor relative to the icon
+});
+
+// Function to load saved coordinates and display markers with custom icon
+function displaySavedCoordinates() {
+    const params = {
+        TableName: tableName,
+        ProjectionExpression: 'coordinates' // Only retrieve coordinates
+    };
+
+    dynamoDB.scan(params, function(err, data) {
+        if (err) {
+            console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            // Loop through each item in the data and place a marker
+            data.Items.forEach(item => {
+                const { lat, lng } = item.coordinates;
+                const latlng = L.latLng(lat, lng);
+
+                // Create a marker with the custom icon, move it backward with zIndexOffset
+                L.marker(latlng, { icon: customIcon, zIndexOffset: -1000 }).addTo(map);
+            });
+        }
+    });
+}
+
+// Call this function to display saved coordinates on map load
+displaySavedCoordinates();
+
+		
+		
+		
+		
+		
 		var jsonData3 = { "lng" : { "N" : "4.699659347534181" }, "lat" : { "N" : "50.87601521734375" } };
 
 var latitude3 = parseFloat(jsonData3.lat.N);
