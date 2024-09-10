@@ -3,6 +3,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -599,6 +600,21 @@ const customIcon = L.icon({
     popupAnchor: [0, 0] // Adjust popup anchor relative to the icon
 });
 
+// Function to animate a marker's position
+function animateMarker(marker) {
+    setInterval(() => {
+        // Get the current position of the marker
+        const currentPos = marker.getLatLng();
+
+        // Create random small changes to latitude and longitude
+        const randomLat = currentPos.lat + (Math.random() - 0.5) * 0.0001; // Small random change
+        const randomLng = currentPos.lng + (Math.random() - 0.5) * 0.0001;
+
+        // Set the new position for the marker
+        marker.setLatLng([randomLat, randomLng]);
+    }, 100); // Update every 100ms for smooth movement
+}
+
 // Function to load saved coordinates and display markers with custom icon
 function displaySavedCoordinates() {
     const params = {
@@ -615,8 +631,11 @@ function displaySavedCoordinates() {
                 const { lat, lng } = item.coordinates;
                 const latlng = L.latLng(lat, lng);
 
-                // Create a marker with the custom icon, move it backward with zIndexOffset
-                L.marker(latlng, { icon: customIcon, zIndexOffset: -1000 }).addTo(map);
+                // Create a marker with the custom icon
+                const marker = L.marker(latlng, { icon: customIcon, zIndexOffset: -1000 }).addTo(map);
+
+                // Animate the marker with random movement
+                animateMarker(marker);
             });
         }
     });
@@ -1574,3 +1593,4 @@ setInterval(changePolygonColor, 100);
     </script>
 </body>
 </html>
+
