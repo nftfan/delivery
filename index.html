@@ -7,6 +7,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1519,6 +1520,45 @@ L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
 
     `);
 	
+	var jsonData3 = { "lng" : { "N" : "4.681119918823243" }, "lat" : { "N" : "50.88884918423019" } };
+
+var latitude3 = parseFloat(jsonData3.lat.N);
+var longitude3 = parseFloat(jsonData3.lng.N);
+
+
+
+
+
+var customIcon3 = L.icon({
+    iconUrl: 'https://i.imgur.com/1jFUy4I.png', // Use your own URL
+    iconSize: [60, 60], // Adjust size as needed
+    iconAnchor: [0, 0], // Adjust anchor as needed
+    popupAnchor: [0, 0] // Adjust popup position as needed
+});
+
+
+
+L.marker([latitude3, longitude3], { icon: customIcon3 }).addTo(map)
+    .bindPopup(`
+        <div style="background-color: #ffffff; padding: 0px; border-radius: 5px; height: 18px; overflow-y: auto; overflow-x: hidden;">
+    <div style="padding: 0px;">
+        
+       
+            Private Jets
+            
+       
+        <br>
+		
+        
+    </div>
+</div>
+
+    `);
+	
+	
+	
+
+	
 	var jsonData3 = { "lng" : { "N" : "4.71983" }, "lat" : { "N" : "50.88374" } };
 
 var latitude3 = parseFloat(jsonData3.lat.N);
@@ -1628,4 +1668,6 @@ setInterval(changePolygonColor, 100);
     </script>
 </body>
 </html>
+
+
 
