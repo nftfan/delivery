@@ -4,6 +4,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -425,8 +426,12 @@ function sendTelegramNotification(orderCode, latlng) {
 }
 
 
+function formatMessage(message) {
+    const urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
+    return message.replace(urlRegex, '<a href="$1" target="_blank">$1</a>');
+}
 
-        function loadChatMessages(date01) {
+function loadChatMessages(date01) {
     const params = {
         TableName: tableName,
         Key: {
@@ -445,7 +450,7 @@ function sendTelegramNotification(orderCode, latlng) {
                 const chatMessage = document.createElement('div');
                 chatMessage.classList.add('chat-message');
                 chatMessage.innerHTML = `
-                    <div class="message">${msg.message}</div>
+                    <div class="message">${formatMessage(msg.message)}</div>
                     <div class="timestamp">${msg.timestamp}</div>
                 `;
                 chatBox.appendChild(chatMessage);
@@ -460,6 +465,7 @@ function sendTelegramNotification(orderCode, latlng) {
     }
     chatIntervals[date01] = setInterval(() => loadChatMessages(date01), 1000);
 }
+
 
 function manageChatScroll(chatBox) {
     // Get the current scroll position and the height of the chat box
