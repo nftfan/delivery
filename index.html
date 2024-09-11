@@ -430,13 +430,21 @@ function sendTelegramNotification(orderCode, latlng) {
 function formatMessage(message) {
     // Regex for URLs
     const urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
-    
-    // Define the icon URL
+
+    // Define the substring to match and the icon URL
+    const matchSubstring = 'https://pay.sumup.com/';
     const iconUrl = 'https://i.imgur.com/9Bp1u6F.png';
-    
-    // Replace URLs with the icon and clickable link
-    return message.replace(urlRegex, `<a href="$1" target="_blank"><img src="${iconUrl}" alt="URL Icon" style="width:100px; height:40px; vertical-align:middle;"> $1</a>`);
+
+    // Replace URLs with icon if they contain the specified substring
+    return message.replace(urlRegex, (match) => {
+        if (match.includes(matchSubstring)) {
+            return `<a href="${match}" target="_blank"><img src="${iconUrl}" alt="URL Icon" style="width:100px; height:40px; vertical-align:middle;"> ${match}</a>`;
+        } else {
+            return `<a href="${match}" target="_blank">${match}</a>`;
+        }
+    });
 }
+
 
 
 function loadChatMessages(date01) {
