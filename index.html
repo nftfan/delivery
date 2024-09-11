@@ -6,6 +6,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -333,6 +334,14 @@ button:hover {
         });
 
        function onMapClick(e) {
+    // Check if user has already created a User ID
+    const storedOrderCode = localStorage.getItem('orderCode');
+    
+    if (storedOrderCode) {
+        alert(`You have already created your User ID: ${storedOrderCode}. You can reopen your chatbox by searching your User ID. Feel free to talk to the assistant, your order will only start when you will confirm anything in chat.`);
+        return;
+    }
+
     const latlng = e.latlng;
     const orderCode = generateOrderCode();
     const date01 = `${latlng.lat}-${latlng.lng}-${Date.now()}`;
@@ -392,8 +401,12 @@ button:hover {
         }
     });
 
+    // Store orderCode in local storage
+    localStorage.setItem('orderCode', orderCode);
+
     loadChatMessages(date01);
 }
+
 
 
 function sendTelegramNotification(orderCode, latlng) {
